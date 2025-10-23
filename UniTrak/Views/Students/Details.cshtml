@@ -1,0 +1,17 @@
+﻿@model UniTrak.Models.Student
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+<p>Id: @Model.Id</p>
+<p>Name: @Model.Name</p>
+<p>Gender: @Model.Gender</p>
+<p>Matriculation Number: @Model.MatriculationNumber</p>
+@if (@Model.DoB.HasValue)
+{
+    <p>Date of Birth: @Model.DoB.Value.ToShortDateString()</p>
+}
+<p>Subscription to newsletter status: @Model.IsSubscribedToNewsletter</p>

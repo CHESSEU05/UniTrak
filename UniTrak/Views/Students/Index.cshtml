@@ -1,0 +1,35 @@
+﻿@using UniTrak.Models
+@using UniTrak.ViewModels
+@model UniTrak.ViewModels.StudentsViewModel
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Students</h2>
+
+@if (@Model.Students.Count == 0)
+{
+    <p>We don't currently have any registered student yet ...</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead class="bg-primary">
+        <tr>
+            <th class="bg-secondary">Name</th>
+            <th class="bg-secondary">Discount Rate</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in @Model.Students)
+        {
+            <tr>
+                <td> @Html.ActionLink(@student.Name, "Details", new { id = student.Id }, null)</td>
+                <td> @student.MembershipType.Name</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+

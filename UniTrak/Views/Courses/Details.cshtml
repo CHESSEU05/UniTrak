@@ -1,0 +1,12 @@
+﻿@model UniTrak.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Code</h2>
+
+<p>Id: @Model.Id</p>
+<p>Title: @Model.Title</p>
+<p>Credit Value: @Model.CreditValue</p>

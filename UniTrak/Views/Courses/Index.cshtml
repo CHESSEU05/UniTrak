@@ -1,0 +1,31 @@
+﻿@model UniTrak.ViewModels.CoursesViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Courses</h2>
+
+@if (@Model.Courses.Count == 0)
+{
+    <p>There are no available courses, yet !!!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th class="bg-secondary">Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var course in @Model.Courses)
+        {
+            <tr>
+                <td>@Html.ActionLink(@course.Code, "Details", new{ id = course.Id}, null )</td>
+                <td></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
