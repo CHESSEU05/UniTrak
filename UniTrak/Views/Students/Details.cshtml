@@ -5,13 +5,14 @@
 }
 
 <h2>@Model.Name</h2>
-
-<p>Id: @Model.Id</p>
-<p>Name: @Model.Name</p>
-<p>Gender: @Model.Gender</p>
-<p>Matriculation Number: @Model.MatriculationNumber</p>
+<hr />
+<p><b>Id</b>: @Model.Id</p>
+<p><b>Name</b>: @Model.Name</p>
+<p><b>Gender</b>: @Model.Gender</p>
+<p><b>Matriculation Number</b>: @Model.MatriculationNumber</p>
+<p><b>Account Type</b>: @Model.MembershipType.Name @(Model.MembershipType.Name == "Pay As You Go" ? "" : "- " + @Model.MembershipType.DurationInMonths.ToString() + " Month(s)")</p>
 @if (@Model.DoB.HasValue)
 {
-    <p>Date of Birth: @Model.DoB.Value.ToShortDateString()</p>
+    <p><b>Date of Birth</b>: @Model.DoB.Value.ToShortDateString()</p>
 }
-<p>Subscription to newsletter status: @Model.IsSubscribedToNewsletter</p>
+<p><b>Subscription to newsletter status</b>: @Model.IsSubscribedToNewsletter</p>

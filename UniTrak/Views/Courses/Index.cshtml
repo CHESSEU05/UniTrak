@@ -6,6 +6,7 @@
 
 <h2>Courses</h2>
 
+<br />
 @if (@Model.Courses.Count == 0)
 {
     <p>There are no available courses, yet !!!</p>
@@ -16,14 +17,15 @@ else
         <thead>
         <tr>
             <th class="bg-secondary">Title</th>
+            <th class="bg-secondary">Category</th>
         </tr>
         </thead>
         <tbody>
         @foreach (var course in @Model.Courses)
         {
             <tr>
-                <td>@Html.ActionLink(@course.Code, "Details", new{ id = course.Id}, null )</td>
-                <td></td>
+                <td>@Html.ActionLink(@course.Title, "Details", new{ id = course.Id}, null )</td>
+                <td>@course.CategoryType.Name</td>
             </tr>
         }
         </tbody>

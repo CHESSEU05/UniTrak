@@ -5,8 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Code</h2>
+<h2>@Model.Code: @Model.Title</h2>
+<hr />
 
-<p>Id: @Model.Id</p>
-<p>Title: @Model.Title</p>
-<p>Credit Value: @Model.CreditValue</p>
+<p><b>Id</b>: @Model.Id</p>
+<p><b>Credit Value</b>: @Model.CreditValue</p>
+<p><b>Category</b>: @Model.CategoryType.Name</p>
+<p><b>Date Added</b>: @Model.DateAdded.ToString("D")</p>

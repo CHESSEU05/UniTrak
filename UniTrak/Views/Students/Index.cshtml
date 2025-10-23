@@ -7,6 +7,8 @@
 }
 
 <h2>Students</h2>
+<br />
+
 
 @if (@Model.Students.Count == 0)
 {
@@ -16,19 +18,19 @@ else
 {
     <table class="table table-bordered table-hover">
         <thead class="bg-primary">
-        <tr>
-            <th class="bg-secondary">Name</th>
-            <th class="bg-secondary">Discount Rate</th>
-        </tr>
+            <tr>
+                <th class="bg-secondary">Name</th>
+                <th class="bg-secondary">Account Type</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var student in @Model.Students)
-        {
-            <tr>
-                <td> @Html.ActionLink(@student.Name, "Details", new { id = student.Id }, null)</td>
-                <td> @student.MembershipType.Name</td>
-            </tr>
-        }
+            @foreach (var student in @Model.Students)
+            {
+                <tr>
+                    <td> @Html.ActionLink(@student.Name, "Details", new { id = student.Id }, null)</td>
+                    <td> @student.MembershipType.Name</td>
+                </tr>
+            }
         </tbody>
     </table>
 }

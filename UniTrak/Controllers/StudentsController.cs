@@ -25,7 +25,7 @@ namespace UniTrak.Controllers
 
         public ViewResult Index()
         {
-            var students = _context.Students.Include(s => s.MembershipType).ToList();
+            var students = _context.Students.Include(s => s.MembershipType).OrderBy(s => s.Name).ToList();
             var studentsViewModel = new StudentsViewModel
             {
                 Students = students
@@ -37,7 +37,8 @@ namespace UniTrak.Controllers
         [Route("Students/Details/{id:int}")]
         public ActionResult Details(int id)
         {
-            var student = _context.Students.SingleOrDefault(s => s.Id == id);
+            var student = _context.Students.Include(s => s.MembershipType).SingleOrDefault(s => s.Id == id);
+
             if (student == null)
                 return HttpNotFound();
 

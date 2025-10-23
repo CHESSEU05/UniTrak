@@ -23,38 +23,23 @@ namespace UniTrak.Controllers
             _context.Dispose();
         }
 
-
-        private readonly List<Course> _courses = new List<Course>
-        {
-            new Course{Id = 1, Code = "CEF444", Title = "Artificial Intelligence & Machine Learning", CreditValue = 4},
-            new Course{Id = 2, Code = "CEF450", Title = "Internet Programming & Mobile Programming", CreditValue = 3},
-            new Course{Id = 3, Code = "CEF438", Title = "Advanced Database & Administration", CreditValue = 4}
-        };
-
-
         // GET: Courses
         public ActionResult Index()
         {
+            var courses = _context.Courses.Include(c => c.CategoryType).OrderBy(c => c.Title).ToList();
             var courseViewModel = new CoursesViewModel
             {
-                Courses = _courses
+                Courses = courses
             };
-
+            
             return View(courseViewModel);
         }
+
 
         [Route("Courses/Details/{id:int}")]
         public ActionResult Details(int id)
         {
-            Course course = null;
-            for (int i = 0; i < _courses.Count; i++)
-            {
-                if (_courses[i].Id == id)
-                {
-                    course = _courses[i];
-                    break;
-                }
-            }
+            var course = _context.Courses.Include(c => c.CategoryType).SingleOrDefault(c => c.Id == id);
 
             if (course == null)
                 return HttpNotFound();
