@@ -23,6 +23,17 @@ namespace UniTrak.Controllers
             _context.Dispose();
         }
 
+        public ActionResult New()
+        {
+            var membershipType = _context.MembershipTypes.ToList();
+
+            var newStudentViewModel = new NewStudentViewModel
+            {
+                MembershipType = membershipType
+            };
+            return View(newStudentViewModel);
+        }
+
         public ViewResult Index()
         {
             var students = _context.Students.Include(s => s.MembershipType).OrderBy(s => s.Name).ToList();

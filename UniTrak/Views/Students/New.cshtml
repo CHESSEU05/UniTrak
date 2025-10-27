@@ -1,0 +1,49 @@
+﻿@model UniTrak.ViewModels.NewStudentViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Student</h2>
+<br />
+
+@using (Html.BeginForm("Create", "Students"))
+{
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Student.Name, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Student.Name, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Student.MatriculationNumber, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Student.MatriculationNumber, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Student.Email, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Student.Email, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Student.PhoneNumber, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Student.PhoneNumber, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Student.DoB, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Student.DoB, new { @class = "form-control", type = "date", value = DateTime.Today.ToString("d")})
+        <div class="form-text">
+            Select your date of birth using the calendar icon.
+        </div>
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Student.Gender, new {@class = "form-label"}) <br /> 
+        @Html.RadioButtonFor(m => m.Student.Gender, "Male", new {@class = "form-check-input"}) Male <br />
+        @Html.RadioButtonFor(m => m.Student.Gender, "Female", new {@class = "form-check-input"}) Female
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Student.MembershipTypeId, new {@class = "form-label"})
+        @Html.DropDownListFor(m => m.Student.MembershipTypeId, new SelectList(Model.MembershipType, "Id", "Name"), "Select Membership Type", new {@class = "form-select"})
+    </div>
+    <div class="checkbox">
+        @Html.CheckBoxFor(m => m.Student.IsSubscribedToNewsletter) 
+        @Html.LabelFor(m => m.Student.IsSubscribedToNewsletter)
+    </div>
+
+}
